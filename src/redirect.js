@@ -6,6 +6,8 @@ import {
     Route,
     Navigate, Link,
 } from "react-router-dom";
+import {fetchShopProducts} from "./products.js";
+
 
 // import Home component
 import Collapsible from './Collapsible';
@@ -15,31 +17,11 @@ import HeadsetPage from "./HeadsetPage";
 import MainPage from "./MainPage";
 
 import React from "react";
+import ph1 from "./img/Oculus-Quest-2.png";
 
 function App() {
     return (
         <div>
-{/*<div className={"displ"}>*/}
-{/*                <div className={"filter"}>Filter</div>*/}
-
-{/*                <span className={"contain"}>*/}
-{/*                    <form className={"search"}>Search</form>*/}
-{/*                    <div className={"product"}></div>*/}
-{/*                    <div className={"product"}></div>*/}
-{/*                    <div className={"product"}></div>*/}
-{/*                    <div className={"product"}></div>*/}
-{/*                    <div className={"product"}></div>*/}
-{/*                    <div className={"product"}></div>*/}
-{/*                    <div className={"product"}></div>*/}
-{/*                    <div className={"product"}></div>*/}
-{/*                    /!*<div className = {"product"}></div>*!/*/}
-{/*                </span>*/}
-{/*        </div>*/}
-            {/*<span className={"flex-cont"}>*/}
-            {/*    sosi*/}
-            {/*</span>*/}
-
-
             <Router>
                 <div>
                     <br/>
@@ -51,8 +33,14 @@ function App() {
                     <br/>
 
                     <Routes>
-                        <Route path={"/oculus"} element={<HeadsetPage/>}/>
+                        <Route path={"/oculus"} element={<HeadsetPage product ={fetchShopProducts[0]} />}/>
                         <Route exact path={"/"} element={<MainPage/>}/>
+                        {
+                            fetchShopProducts.map((entry, index) =>
+                                <Route key={entry.Nickname} path={"/"+entry.Nickname} element={<HeadsetPage product ={entry}/>}/>
+                            )
+                        }
+
                     </Routes>
                     {/*<Link to={"/oculus"}>Oculus</Link>*/}
                     {/*<Link to="/">Back</Link>*/}

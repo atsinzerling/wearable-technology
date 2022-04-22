@@ -18,10 +18,11 @@ code {
     /*display: inline-flex;*/
 }
 .pagename{
+    display: flex;
     justify-content: center;
+    width: 100%;
     font-size: 38px;
     color: #be8907;
-    display: inline-block;
     margin-left: auto;
     margin-right: auto;
     font-weight: bold;
